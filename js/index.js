@@ -53,7 +53,15 @@ const displayPhoneDetails = phone => {
             <h5 class="card-title">Name: ${phone.name}</h5>
             <p class="card-text">Brand: ${phone.brand}</p>
             <p>Release Date: ${phone.releaseDate}</p>
-            <p>Features: ${phone.mainFeatures}</p>
+            <div>
+            <p class="text-center">Features:<p>
+            <p>chipSet: ${phone.mainFeatures.chipSet} </p>
+            <p>displaySize: ${phone.mainFeatures.displaySize} </p>
+            <p>memory: ${phone.mainFeatures.memory} </p>
+            <p>storage: ${phone.mainFeatures.storage} </p>
+            <p>sensors: ${phone.mainFeatures.sensors[0]},${phone.mainFeatures.sensors[1]},${phone.mainFeatures.sensors[2]},${phone.mainFeatures.sensors[3]},${phone.mainFeatures.sensors[4]},${phone.mainFeatures.sensors[5]}</p>
+
+            </div>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     `;
