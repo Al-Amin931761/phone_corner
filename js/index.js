@@ -4,12 +4,19 @@ const searchPhone = () => {
     // console.log(searchText);
     searchField.value = '';
 
-
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
-    // console.log(url);
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySearchResult(data.data))
+    // empty input message 
+    const errorMessage = document.getElementById('empty-input-message');
+    if (searchText == '') {
+        errorMessage.style.display = 'block';
+    }
+    else {
+        errorMessage.style.display = 'none';
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+        // console.log(url);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displaySearchResult(data.data))
+    }
 }
 
 const displaySearchResult = phones => {
@@ -17,19 +24,19 @@ const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     phones.forEach(phone => {
-        // console.log(phone.slug);
+        // console.log(phone.phone_name);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card h-25">
-                    <img src="${phone.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-            <h5 class="card-title"><span class ="fw-bold">Name:</span> ${phone.phone_name}</h5>
-            <p class="card-text"><span class ="fw-bold">Brand:</span> ${phone.brand}</p>
-                </div>
-                <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-info">Details</button>
-        </div>
-        `;
+              <div class="card h-25">
+                          <img src="${phone.image}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                  <h5 class="card-title"><span class ="fw-bold">Name:</span> ${phone.phone_name}</h5>
+                  <p class="card-text"><span class ="fw-bold">Brand:</span> ${phone.brand}</p>
+                      </div>
+                      <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-info">Details</button>
+              </div>
+              `;
         searchResult.appendChild(div);
     })
 }
@@ -44,9 +51,10 @@ const loadPhoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phone => {
-    console.log(phone);
+    console.log(phone.name);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
+
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
@@ -70,7 +78,7 @@ const displayPhoneDetails = phone => {
             <p><span class ="fw-bold">Radio:</span> ${phone.others.Radio} </p>
             <p><span class ="fw-bold">USB:</span> ${phone.others.USB} </p>
             <p><span class ="fw-bold">WLAN:</span> ${phone.others.WLAN} </p>
-            </div>
+       </div>
         </div>
     `;
     phoneDetails.appendChild(div);
