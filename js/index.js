@@ -9,6 +9,7 @@ const searchPhone = () => {
     if (searchText == '') {
         errorMessage.style.display = 'block';
     }
+
     else {
         errorMessage.style.display = 'none';
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
@@ -16,18 +17,32 @@ const searchPhone = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => displaySearchResult(data.data))
+
     }
 }
 
+// display search result 
 const displaySearchResult = phones => {
-    // console.log(phones);
-    const searchResult = document.getElementById('search-result');
-    searchResult.textContent = '';
-    phones.forEach(phone => {
-        // console.log(phone.phone_name);
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
+
+    // error message
+    const noResult = document.getElementById('no-result-Message');
+    if (phones.length == 0) {
+        // console.log('zero property')
+        noResult.style.display = 'block';
+    }
+
+
+    else {
+        noResult.style.display = 'none';
+        const searchResult = document.getElementById('search-result');
+        // console.log(searchResult);
+        searchResult.textContent = '';
+        phones.forEach(phone => {
+            // console.log(phone);
+
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = `
               <div class="card h-25">
                           <img src="${phone.image}" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -37,8 +52,9 @@ const displaySearchResult = phones => {
                       <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-info">Details</button>
               </div>
               `;
-        searchResult.appendChild(div);
-    })
+            searchResult.appendChild(div);
+        })
+    }
 }
 
 const loadPhoneDetails = phoneId => {
@@ -51,7 +67,7 @@ const loadPhoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phone => {
-    console.log(phone.name);
+    // console.log(phone.name);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
 
