@@ -1,7 +1,6 @@
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // console.log(searchText);
     searchField.value = '';
 
     // empty input message 
@@ -23,15 +22,12 @@ const searchPhone = () => {
 
 // display search result 
 const displaySearchResult = phones => {
-    // console.log(phones)
 
     // error message
     const noResult = document.getElementById('no-result-Message');
     if (phones.length == 0) {
         noResult.style.display = 'block';
     }
-
-
     else {
         noResult.style.display = 'none';
         const searchResult = document.getElementById('search-result');
@@ -54,20 +50,18 @@ const displaySearchResult = phones => {
             searchResult.appendChild(div);
         })
     }
-
 }
 
 const loadPhoneDetails = phoneId => {
-    // console.log(phoneId);
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
-    // console.log(url);
+
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
 }
 
+// single card phone details 
 const displayPhoneDetails = phone => {
-    // console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
 
@@ -76,43 +70,43 @@ const displayPhoneDetails = phone => {
 
     if (phone.releaseDate == '') {
         div.innerHTML = `
-   <div class="details-card-background" id ="phone">
-   <img src="${phone.image}" class="card-img-top p-5" alt="...">
-   <div class="card-body">
+<div class="details-card-background" id ="phone">
+        <img src="${phone.image}" class="card-img-top p-5" alt="...">
+  <div class="card-body">
        <h5 class="card-title"><span class ="fw-bold">Name:</span> ${phone.name}</h5>
        <p class="card-text"><span class ="fw-bold">Brand:</span> ${phone.brand}</p>
        <p class="card-text"><span class ="fw-bold">Brandy:</span> ${phone.brand}</p>
        <p><span class ="fw-bold">Release Date: </span>No release date found</p>
-<div>
-   <p class="text-center fw-bold fs-5 text-info"> Main Features:<p>
+      <div>
+        <p class="text-center fw-bold fs-5 text-info"> Main Features:<p>
        <p><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet} </p>
        <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize} </p>
        <p><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory} </p>
        <p><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage} </p>
        <p><span class="fw-bold">Sensors:</span> ${phone.mainFeatures.sensors[0]},${phone.mainFeatures.sensors[1]},${phone.mainFeatures.sensors[2]},${phone.mainFeatures.sensors[3]},${phone.mainFeatures.sensors[4]},${phone.mainFeatures.sensors[5]}</p>
 
-       <p class="text-center fw-bold fs-5 text-info">Others:</p>
+         <p class="text-center fw-bold fs-5 text-info">Others:</p>
        <p><span class="fw-bold">Bluetooth:</span> ${phone.others?.Bluetooth ? phone.others.Bluetooth : 'Not available'} </p>
        <p><span class="fw-bold">GPS:</span> ${phone.others?.GPS ? phone.others.GPS : 'Not available'} </p>
        <p><span class="fw-bold">NFC:</span> ${phone.others?.NFC ? phone.others.NFC : 'Not available'} </p>
        <p><span class="fw-bold">Radio:</span> ${phone.others?.Radio ? phone.others.Radio : 'Not available'} </p>
        <p><span class="fw-bold">USB:</span> ${phone.others?.USB ? phone.others.USB : 'Not available'} </p>
        <p><span class="fw-bold">WLAN:</span> ${phone.others?.WLAN ? phone.others.WLAN : 'Not available'} </p>
+      </div>
    </div>
 </div>
-   </div>
 `;
     }
     else {
         div.innerHTML = `
-    <div class="details-card-background" id="phone">
+<div class="details-card-background" id="phone">
     <img src="${phone.image}" class="card-img-top p-5" alt="...">
-    <div class="card-body">
+  <div class="card-body">
         <h5 class="card-title"><span class ="fw-bold">Name:</span> ${phone.name}</h5>
         <p class="card-text"><span class ="fw-bold">Brand:</span> ${phone.brand}</p>
         <p><span class ="fw-bold">Release Date:</span> ${phone.releaseDate}</p>
-<div>
-    <p class="text-center fw-bold fs-5 text-info"> Main Features:<p>
+      <div>
+        <p class="text-center fw-bold fs-5 text-info"> Main Features:<p>
         <p><span class="fw-bold">Chipset:</span> ${phone.mainFeatures.chipSet} </p>
         <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize} </p>
         <p><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory} </p>
@@ -126,8 +120,8 @@ const displayPhoneDetails = phone => {
         <p><span class="fw-bold">Radio:</span> ${phone.others?.Radio ? phone.others.Radio : 'Not available'} </p>
         <p><span class="fw-bold">USB:</span> ${phone.others?.USB ? phone.others.USB : 'Not available'} </p>
         <p><span class="fw-bold">WLAN:</span> ${phone.others?.WLAN ? phone.others.WLAN : 'Not available'} </p>
-    </div>
-</div>
+      </div>
+  </div>
 </div>
 `;
     }

@@ -1,5 +1,5 @@
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 /* body  */
 body{
@@ -7,18 +7,15 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-
  /* all card background  */
  .card-background{
     background-color: #FFF9F9;
 }
 
-
 /* details card background  */
 .details-card-background{
     background-color:#EFFFFD;
 }
-
 
 /* details button  */
 .details-button{
@@ -33,19 +30,17 @@ body{
     border-radius: 10px;
 } 
 
-
-/* error message  */
-.empty-input-message{
-text-align: center;
-    background-color:forestgreen;
+/* error messages  */
+.error-message{
+    text-align: center;
+    background-color:deeppink;
     color: white;
-font-weight: 700;
-font-size:larger;
-margin: 100px;
-padding: 10px;
-border: 2px solid green;
-border-radius: 10px;
-display: none;
+    font-weight: 700;
+    font-size:larger;
+    margin: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
 }
 
 
