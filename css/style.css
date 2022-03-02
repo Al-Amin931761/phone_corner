@@ -1,7 +1,39 @@
+/* body  */
+body{
+    background-color: #F7F7F7;
+}
+
+
+ /* all card background  */
+ .card-background{
+    background-color: #FFF9F9;
+}
+
+
+/* details card background  */
+.details-card-background{
+    background-color:#EFFFFD;
+}
+
+
+/* details button  */
+.details-button{
+    background-color: tomato;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    padding: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 10px;
+} 
+
+
 /* error message  */
 .empty-input-message{
 text-align: center;
-    background-color: tomato;
+    background-color:forestgreen;
     color: white;
 font-weight: 700;
 font-size:larger;
@@ -11,4 +43,8 @@ border: 2px solid green;
 border-radius: 10px;
 display: none;
 }
+
+
+
+
 
